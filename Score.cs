@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +17,20 @@ namespace M03UF5AC1
 
         public void SetPlayer(string player)
         {
-            if(ComprovaPlayer(player))
+            this.player = player;
+        }
+        public static bool ComprovaPlayer(string cadena)
+        {
+            if (Regex.IsMatch(cadena, @"^[a-zA-Z]+$"))
             {
-                this.player = player;
+
+                return true;
             }
             else
             {
                 Console.WriteLine("Error: El nom del jugador no és correcte");
+                return false;
             }
-        }
-        public static bool ComprovaPlayer(string cadena)
-        {
-            return Regex.IsMatch(cadena, @"^[a-zA-Z]+$");
         }
         public string GetPlayer()
         {
@@ -37,14 +39,7 @@ namespace M03UF5AC1
 
         public void SetMission(string mission)
         {
-            if(ComprovaMission(mission))
-            {
-                this.mission = mission;
-            }
-            else
-            {
-                Console.WriteLine("Error: El nom de la missió no és correcta");
-            }
+            this.mission = mission;
         }
         public string GetMission()
         {
@@ -52,19 +47,16 @@ namespace M03UF5AC1
         }
         public static bool ComprovaMission(string cadena)
         {
-            return Regex.IsMatch(cadena, @"^(Alfa|Beta|Gamma|Delta|Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu|Nu|Xi|Omicron|Pi|Rho|Sigma|Tau|Upsilon|Phi|Chi|Psi|Omega)-[0-9]{3}$");
+            if (Regex.IsMatch(cadena, @"^(Alfa|Beta|Gamma|Delta|Epsilon|Zeta|Eta|Theta|Iota|Kappa|Lambda|Mu|Nu|Xi|Omicron|Pi|Rho|Sigma|Tau|Upsilon|Phi|Chi|Psi|Omega)-[0-9]{3}$"))
+            {
+                return true;
+            }
+            return false;
         }
 
         public void SetScoring(int scoring)
         {
-            if(ComprovaScoring(scoring))
-            {
-                this.scoring = scoring;
-            }
-            else
-            {
-                Console.WriteLine("Error: La puntuació no és correcta");
-            }
+            this.scoring = scoring;
         }
         public int GetScoring()
         {
@@ -72,7 +64,11 @@ namespace M03UF5AC1
         }
         public static bool ComprovaScoring(int valor)
         {
-            return valor >= 0 && valor <= 500;
+            if (valor >= 0 && valor <= 500)
+            {
+            return true;
+            }
+            return false;
         }
 
         public Score(string player, string mission, int scoring)
