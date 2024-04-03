@@ -51,7 +51,11 @@ namespace M03UF5AC1
             {
                 return true;
             }
-            return false;
+            else
+            {
+                Console.WriteLine("Error: El nom de la missió no és correcte");
+                return false;
+            }
         }
 
         public void SetScoring(int scoring)
@@ -68,7 +72,11 @@ namespace M03UF5AC1
             {
             return true;
             }
-            return false;
+            else
+            {
+                Console.WriteLine("Error: La puntuació no és correcta");
+                return false;
+            }
         }
 
         public Score(string player, string mission, int scoring)
